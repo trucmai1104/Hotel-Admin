@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Thống Kê</title>
+    <style>
+        /* Định dạng PDF */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center text-info">BÁO CÁO THỐNG KÊ</h1>
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Loại Phòng</th>
+            <th>Doanh Thu</th>
+            <th>Số Lượt Thuê</th>
+            <th>Tỷ Lệ</th>
+        </tr>
+
+        {% for m in monthSaleStatistic %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ m[0] }}</td>
+            <td>{{ "{:,.0f}".format(m[1]) }} VND</td>
+            <td>{{ m[2] }}</td>
+            <td>{{ m[3] }} %</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h4 class="text-center text-info">BIỂU ĐỒ DOANH THU</h4>
+    <p>Biểu đồ doanh thu sẽ được tạo dưới dạng hình ảnh trong bản in nếu cần.</p>
+
+    <h4 class="text-center text-info">TỶ LỆ THUÊ LOẠI PHÒNG</h4>
+    <p>Biểu đồ tỷ lệ thuê loại phòng sẽ được tạo dưới dạng hình ảnh trong bản in nếu cần.</p>
+</body>
+</html>
